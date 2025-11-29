@@ -1,12 +1,12 @@
 # 🎮 Splicing - Pixel Art Puzzle Game
-🤡A multi-level pixel art style game project, with each level using a different color theme and gameplay mechanics.
+🙌A multi-level pixel art style game project, with each level using a different color theme and gameplay mechanics.
 
  🔑 Play three games to get the corresponding passwords to unlock a mysterious Easter egg!
 
-## 🌐 Play Game Now！
+## 😍 Play Game Now！
 https://mckenzieaaa.github.io/Splicing/
 
-## 🎦 Game web interface construction
+## 🌐 Game web interface construction
 - The interface initially features a pure black color scheme.
 ![ae3c946ba134b4d3a4934bd78da8fe67](https://github.com/user-attachments/assets/44e3ff83-842d-4175-b662-c9f3cd00e800)
 
@@ -33,7 +33,7 @@ https://mckenzieaaa.github.io/Splicing/
 
 ## 🎨 Level Details
 
-### Level-1: A SIMPLE JOURNEY (Level-1)
+### 1️⃣Level-1: A SIMPLE JOURNEY (Level-1)
 
 **How to play:**
 - 🏃‍♂️ Use "WASD" to control character movement.
@@ -46,7 +46,7 @@ https://mckenzieaaa.github.io/Splicing/
   <img width="1400" height="802" alt="b32f07f0f8b89c661027ca6f0b1d9544" src="https://github.com/user-attachments/assets/51f7b4d0-2703-4f59-bc91-225444a0e8fa" />
 ![b802b4daae42f1376a82ab7328cb1ecc](https://github.com/user-attachments/assets/4b72077e-5889-483a-a8e4-180ca47f50d5)![3c713ffb4061d7d518ffac4b8ffdd308](https://github.com/user-attachments/assets/b5b235a9-18e6-4023-aea8-ada3bd28f51d)![a34ca97820af2655a8e02bd2b11553f2](https://github.com/user-attachments/assets/f4c19ceb-f005-41b1-a13e-cf03fe67f025)
 
-### Level-2: I AM THE MOST MAGICAL CAT (Level-2)
+### 2️⃣Level-2: I AM THE MOST MAGICAL CAT (Level-2)
 
 **How to play:**
 - 🐱 Use "Space" to control the adorable cat protagonist to jump and glide.
@@ -58,9 +58,7 @@ https://mckenzieaaa.github.io/Splicing/
   <img width="1402" height="810" alt="45758c3cb77e180fc4c4653cf271855e" src="https://github.com/user-attachments/assets/568570d4-dd6d-4078-8d2e-ff23587aa644" />
 <img width="1384" height="795" alt="1e98919458dc16ae92ee947274328051" src="https://github.com/user-attachments/assets/085f3638-6cc1-45cc-a520-76978cc43c3a" />![a7ace26fc1e9e981189f3f0a5f01a125](https://github.com/user-attachments/assets/8a7baa76-5f53-4feb-a9e1-f04c34e1c707)
 
-
-
-### level-3: Fingertip Magic (level-3)
+### 3️⃣level-3: Fingertip Magic (level-3)
 
 **How to play:** 
 - 🎯 Camera gesture tracking to collect coins
@@ -68,21 +66,18 @@ https://mckenzieaaa.github.io/Splicing/
 - 📸 Innovative interactive real-time video processing
 
 **Game Preview:**
-- 👆 [Level-3: Fingertip Magic](https://mckenzieaaa.github.io/Splicing/level-3/) - AI gesture recognition game
+- 👆 [Level-3: Fingertip Magic](https://mckenzieaaa.github.io/Splicing/level-3/) - AI gesture recognition game![鎸囧皷8 7mb](https://github.com/user-attachments/assets/62476c37-3bd1-46aa-adb7-b8a43c05e11c)
+
   <img width="1404" height="812" alt="f960291294f0b0d9c9d7ea74f8106dbc" src="https://github.com/user-attachments/assets/220cc6ad-9fc2-468e-a700-f38398848c46" /><img width="1396" height="799" alt="78f4e8ed75e45a949f691d9baf723114" src="https://github.com/user-attachments/assets/970211e7-c5bf-499c-8732-30babb7efe15" /><img width="1407" height="780" alt="4d095aff85c8c33dace1838a08c4524c" src="https://github.com/user-attachments/assets/00e90047-637d-4fc1-b6e1-dce618a3601f" />
 
-
-
 ## 🔑 Game Password System
-
 A password will be displayed after each level is completed, which is used to unlock the next level:
 
 - Level 1 → `1030`
 - Level 2 → `1218`  
 - Level 3 → `0218`
 
-## 👥 团队协作
-
+## 👥 Teamwork
 This project uses a branching development approach, with each team member responsible for one level:
 
 1. **OUYANG Xinran** - Level-1 (A SIMPLE JOURNEY) 
