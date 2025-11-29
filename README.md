@@ -1,4 +1,4 @@
-<img width="1399" height="803" alt="微信图片_20251129150143_329_1325" src="https://github.com/user-attachments/assets/3d81009b-a26c-4fc9-bbaf-b6d8da0adf78" /># 🎮 Splicing - Pixel Art Puzzle Game
+# 🎮 Splicing - Pixel Art Puzzle Game
 🙌A multi-level pixel art style game project, with each level using a different color theme and gameplay mechanics.
 
  🔑 Play three games to get the corresponding passwords to unlock a mysterious Easter egg!
