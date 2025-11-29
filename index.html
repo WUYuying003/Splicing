@@ -344,6 +344,14 @@
             display: none;
         }
         
+        .sidebar.hidden + .sidebar-toggle {
+            right: 20px;
+        }
+        
+        .sidebar:not(.hidden) + .sidebar-toggle {
+            right: 300px;
+        }
+        
         .sidebar-toggle:hover {
             background: rgba(0, 0, 0, 0.7);
             transform: scale(1.05);
@@ -444,7 +452,6 @@
     </div>
     
     <!-- Sidebar - Stage Viewer (Only visible at 100% completion) -->
-    <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">◀ HIDE</button>
     <div class="sidebar" id="sidebar">
         <h3>🎨 REVIEW<br>EVOLUTION<br>HISTORY</h3>
         <div class="stage-buttons">
@@ -454,6 +461,7 @@
             <button class="stage-btn" onclick="switchStage(3)">STAGE 3<br>Full Color</button>
         </div>
     </div>
+    <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">◀ HIDE</button>
 
     <script>
         // 密钥映射 - 修正密码：Level 2 密码是 1218，Level 3 密码是 0218
