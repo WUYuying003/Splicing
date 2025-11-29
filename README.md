@@ -10,9 +10,9 @@ This project adopts**Branching development**，Each level is independent of the 
 
 | 分支 | 主题 | 状态 | 代码量 | 描述 |
 |------|------|------|--------|------|
-| **Level-1** | 黑白世界 | ✅ 完成 | 1,334 行 | 文字收集游戏，记忆文字解开谜题 |
-| **Level-2** | 魔法猫咪 | ✅ 完成 | 1,005 行 | 跳跃冒险游戏，收集金币避开障碍 |
-| **level-3** | 手势追踪游戏 | ✅ 完成 | 1,771 行 | 手势追踪收集游戏，使用AI技术 |
+| **Level-1** | A SIMPLE JOURNEY | ✅ 完成 | 1,334 行 | A word collection game where you memorize words to solve puzzles. |
+| **Level-2** | I AM THE MOST MAGICAL CAT | ✅ 完成 | 1,005 行 | Jumping adventure game, collect coins and avoid obstacles |
+| **level-3** | 手势追踪游戏 | ✅ 完成 | 1,771 行 | Gesture tracking collection game using AI technology |
 
 ## 🌐 在线游戏
 
