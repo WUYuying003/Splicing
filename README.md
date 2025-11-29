@@ -6,6 +6,8 @@
 ## 😍 Play Game Now！
 https://mckenzieaaa.github.io/Splicing/
 
+https://github.com/user-attachments/assets/ad9cda69-8614-4581-8c86-c927626b22dc
+
 ## 🌐 Game web interface construction
 🎨The overall interface uses a pixel art style, and the colors gradually transition from cool to vibrant as you progress through the levels.
 - The interface initially features a pure black color scheme.
@@ -43,7 +45,8 @@ https://mckenzieaaa.github.io/Splicing/
 - 😐 You need to try again if you make a mistake.
 
 **Game Preview:**
-- 🎮 [Level-1: A SIMPLE JOURNEY](https://mckenzieaaa.github.io/Splicing/level-1/) - Text collection decryption
+- 🎮 [Level-1: A SIMPLE JOURNEY](https://mckenzieaaa.github.io/Splicing/level-1/) - Text collection decryption![鏂囧瓧9 46](https://github.com/user-attachments/assets/8f4673c2-43d9-483f-ad76-bd5ad036ea92)
+
   <img width="1400" height="802" alt="b32f07f0f8b89c661027ca6f0b1d9544" src="https://github.com/user-attachments/assets/51f7b4d0-2703-4f59-bc91-225444a0e8fa" />
 ![b802b4daae42f1376a82ab7328cb1ecc](https://github.com/user-attachments/assets/4b72077e-5889-483a-a8e4-180ca47f50d5)![3c713ffb4061d7d518ffac4b8ffdd308](https://github.com/user-attachments/assets/b5b235a9-18e6-4023-aea8-ada3bd28f51d)![a34ca97820af2655a8e02bd2b11553f2](https://github.com/user-attachments/assets/f4c19ceb-f005-41b1-a13e-cf03fe67f025)
 
@@ -55,7 +58,8 @@ https://mckenzieaaa.github.io/Splicing/
 - 🚧 Avoid obstacles; touching them will result in game over.
 
 **Game Preview:**
-- 🐱 [Level-2: I AM THE MOST MAGICAL CAT](https://mckenzieaaa.github.io/Splicing/level-2/) - Jump Collection Game
+- 🐱 [Level-2: I AM THE MOST MAGICAL CAT](https://mckenzieaaa.github.io/Splicing/level-2/) - Jump Collection Game![鐚挭7 51](https://github.com/user-attachments/assets/1f9146f8-b37e-4b62-b3c6-935381dcdce2)
+
   <img width="1402" height="810" alt="45758c3cb77e180fc4c4653cf271855e" src="https://github.com/user-attachments/assets/568570d4-dd6d-4078-8d2e-ff23587aa644" />
 <img width="1384" height="795" alt="1e98919458dc16ae92ee947274328051" src="https://github.com/user-attachments/assets/085f3638-6cc1-45cc-a520-76978cc43c3a" />![a7ace26fc1e9e981189f3f0a5f01a125](https://github.com/user-attachments/assets/8a7baa76-5f53-4feb-a9e1-f04c34e1c707)
 
