@@ -23,7 +23,7 @@ This project adopts**Branching development**，Each level is independent of the 
   <img width="1402" height="810" alt="45758c3cb77e180fc4c4653cf271855e" src="https://github.com/user-attachments/assets/568570d4-dd6d-4078-8d2e-ff23587aa644" />
 
 - 👆 [Level-3: Fingertip Magic](https://mckenzieaaa.github.io/Splicing/level-3/) - AI gesture recognition game
- <img width="1404" height="812" alt="f960291294f0b0d9c9d7ea74f8106dbc" src="https://github.com/user-attachments/assets/220cc6ad-9fc2-468e-a700-f38398848c46" />
+  <img width="1404" height="812" alt="f960291294f0b0d9c9d7ea74f8106dbc" src="https://github.com/user-attachments/assets/220cc6ad-9fc2-468e-a700-f38398848c46" />
 
 
 ## 📊 技术栈
