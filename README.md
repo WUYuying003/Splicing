@@ -22,6 +22,9 @@ https://github.com/user-attachments/assets/ad9cda69-8614-4581-8c86-c927626b22dc
 - After unlocking the third level with the key and passing the level, the interface will change to:
 ![269b52decc0ea7b60deb3fe03779d95d](https://github.com/user-attachments/assets/d31178cb-298a-4b53-bec3-295a5864b747)
 
+- Enter the Easter egg riddle, the interface will change to:
+<img width="1458" height="826" alt="a39755cdbf4846a4be3b3499693a08bd" src="https://github.com/user-attachments/assets/a06be046-c3ca-4116-a7a6-21cc7e51a7d0" />
+
 ## 🌄 Interface Easter Eggs:
 - The pixelated image of the Hong Kong Polytechnic University building gradually appears as you unlock levels.
 ![0a0d4b1889ca8c1e9d87fd9cc20e943c](https://github.com/user-attachments/assets/b7db9950-64f3-452a-883f-916ea9e92c62)![b824143a0bc821c5fa38c07c90648a48](https://github.com/user-attachments/assets/6635870d-25c7-4c84-9389-7a43578a05f4)<img width="1455" height="825" alt="bcc5435fec9e656c4e467e9980601e67" src="https://github.com/user-attachments/assets/e649fae0-068b-4c97-b954-fc569d71fa50" /><img width="1456" height="828" alt="32282f8c78336299b6a23cab3a1ac4f5" src="https://github.com/user-attachments/assets/0b79ffe3-5b8d-49ca-8dc9-2cf36d6fe413" /><img width="1460" height="826" alt="152a0d783ef3cd7d427ace3e55258be4" src="https://github.com/user-attachments/assets/c37834f0-d6dd-4a4c-ad5a-ab6ac412cf28" />
@@ -46,9 +49,7 @@ https://github.com/user-attachments/assets/ad9cda69-8614-4581-8c86-c927626b22dc
 
 **Game Preview:**
 - 🎮 [Level-1: A SIMPLE JOURNEY](https://mckenzieaaa.github.io/Splicing/level-1/) - Text collection decryption![鏂囧瓧9 46](https://github.com/user-attachments/assets/8f4673c2-43d9-483f-ad76-bd5ad036ea92)
-
-  <img width="1400" height="802" alt="b32f07f0f8b89c661027ca6f0b1d9544" src="https://github.com/user-attachments/assets/51f7b4d0-2703-4f59-bc91-225444a0e8fa" />
-![b802b4daae42f1376a82ab7328cb1ecc](https://github.com/user-attachments/assets/4b72077e-5889-483a-a8e4-180ca47f50d5)![3c713ffb4061d7d518ffac4b8ffdd308](https://github.com/user-attachments/assets/b5b235a9-18e6-4023-aea8-ada3bd28f51d)![a34ca97820af2655a8e02bd2b11553f2](https://github.com/user-attachments/assets/f4c19ceb-f005-41b1-a13e-cf03fe67f025)
+<img width="1400" height="802" alt="b32f07f0f8b89c661027ca6f0b1d9544" src="https://github.com/user-attachments/assets/12de7ff1-74dd-45f2-bb04-5b9b9797ef22" /><img width="1405" height="797" alt="11912687a6aeed9f5621570ef5ada5a6" src="https://github.com/user-attachments/assets/b2a08a24-0b34-4d10-8cca-faaf39a10fbd" /><img width="1380" height="800" alt="3c713ffb4061d7d518ffac4b8ffdd308" src="https://github.com/user-attachments/assets/5a07d7c8-0872-486a-8f70-e28899399916" /><img width="1397" height="810" alt="a34ca97820af2655a8e02bd2b11553f2" src="https://github.com/user-attachments/assets/3fc3068c-74df-46eb-ba44-f93163cf2f4a" />
 
 ### 2️⃣Level-2: I AM THE MOST MAGICAL CAT (Level-2)
 
@@ -58,10 +59,7 @@ https://github.com/user-attachments/assets/ad9cda69-8614-4581-8c86-c927626b22dc
 - 🚧 Avoid obstacles; touching them will result in game over.
 
 **Game Preview:**
-- 🐱 [Level-2: I AM THE MOST MAGICAL CAT](https://mckenzieaaa.github.io/Splicing/level-2/) - Jump Collection Game![鐚挭7 51](https://github.com/user-attachments/assets/1f9146f8-b37e-4b62-b3c6-935381dcdce2)
-
-  <img width="1402" height="810" alt="45758c3cb77e180fc4c4653cf271855e" src="https://github.com/user-attachments/assets/568570d4-dd6d-4078-8d2e-ff23587aa644" />
-<img width="1384" height="795" alt="1e98919458dc16ae92ee947274328051" src="https://github.com/user-attachments/assets/085f3638-6cc1-45cc-a520-76978cc43c3a" />![a7ace26fc1e9e981189f3f0a5f01a125](https://github.com/user-attachments/assets/8a7baa76-5f53-4feb-a9e1-f04c34e1c707)
+- 🐱 [Level-2: I AM THE MOST MAGICAL CAT](https://mckenzieaaa.github.io/Splicing/level-2/) - Jump Collection Game![鐚挭7 51](https://github.com/user-attachments/assets/1f9146f8-b37e-4b62-b3c6-935381dcdce2)<img width="1402" height="810" alt="45758c3cb77e180fc4c4653cf271855e" src="https://github.com/user-attachments/assets/c5b19579-abc0-4709-9040-ee988c96900b" /><img width="1384" height="795" alt="1e98919458dc16ae92ee947274328051" src="https://github.com/user-attachments/assets/960285e0-d776-4f47-8d7a-a6ad6f012a6b" /><img width="1401" height="800" alt="04f409fee3a51c7a0a924caa40bb7aa3" src="https://github.com/user-attachments/assets/0702a033-5c0f-433f-9763-735612da2bf0" />
 
 ### 3️⃣level-3: Fingertip Magic (level-3)
 
