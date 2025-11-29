@@ -2,64 +2,29 @@
 
 A multi-level pixel art style game project, with each level using a different color theme and gameplay mechanics.
 
-## 📂 项目结构
+## 📂 Project Structure
 
 This project adopts**Branching development**，Each level is independent of the other two branches:
 
-### 🎯 关卡分支
+### 🎯 Level Branches
 
-| 分支 | 主题 | 状态 | 代码量 | 描述 |
+| Branches | Theme | State | Code volume | Describe |
 |------|------|------|--------|------|
-| **Level-1** | A SIMPLE JOURNEY | ✅ 完成 | 1,334 行 | A word collection game where you memorize words to solve puzzles. |
-| **Level-2** | I AM THE MOST MAGICAL CAT | ✅ 完成 | 1,005 行 | Jumping adventure game, collect coins and avoid obstacles |
-| **level-3** | 手势追踪游戏 | ✅ 完成 | 1,771 行 | Gesture tracking collection game using AI technology |
+| **Level-1** | A SIMPLE JOURNEY | ✅ Finish | 1,334 lines | A word collection game where you memorize words to solve puzzles. |
+| **Level-2** | I AM THE MOST MAGICAL CAT | ✅ Finish | 1,005 lines | Jumping adventure game, collect coins and avoid obstacles |
+| **level-3** | Fingertip Magic | ✅ Finish | 1,771 lines | Gesture tracking collection game using AI technology |
 
-## 🌐 在线游戏
+## 🌐 Game Overview
 
-**直接在浏览器中玩游戏：**
+- 🎮 [Level-1: A SIMPLE JOURNEY](https://mckenzieaaa.github.io/Splicing/level-1/) - Text collection decryption
+  <img width="1400" height="802" alt="b32f07f0f8b89c661027ca6f0b1d9544" src="https://github.com/user-attachments/assets/51f7b4d0-2703-4f59-bc91-225444a0e8fa" />
 
-- 🎮 [Level-1: 黑白世界](https://mckenzieaaa.github.io/Splicing/level-1/) - 平台跳跃冒险
-- 🐱 [Level-2: 魔法猫咪](https://mckenzieaaa.github.io/Splicing/level-2/) - 跳跃收集游戏
-- � [Level-3: 手势追踪](https://mckenzieaaa.github.io/Splicing/level-3/) - AI手势识别游戏
+- 🐱 [Level-2: I AM THE MOST MAGICAL CAT](https://mckenzieaaa.github.io/Splicing/level-2/) - Jump Collection Game
+  <img width="1402" height="810" alt="45758c3cb77e180fc4c4653cf271855e" src="https://github.com/user-attachments/assets/568570d4-dd6d-4078-8d2e-ff23587aa644" />
 
-## �🚀 快速开始
+- 👆 [Level-3: Fingertip Magic](https://mckenzieaaa.github.io/Splicing/level-3/) - AI gesture recognition game
+ <img width="1404" height="812" alt="f960291294f0b0d9c9d7ea74f8106dbc" src="https://github.com/user-attachments/assets/220cc6ad-9fc2-468e-a700-f38398848c46" />
 
-### 查看各个关卡
-
-切换到对应分支查看完整代码：
-
-```bash
-# 查看 Level-1 (黑白关卡)
-git checkout Level-1
-
-# 查看 Level-2 (猫咪游戏)
-git checkout Level-2
-
-# 查看 level-3 (手势追踪游戏)
-git checkout level-3
-```
-
-### 运行游戏
-
-每个分支都包含完整的游戏文件，直接打开对应的 HTML 文件即可：
-
-**Level-1:**
-```bash
-git checkout Level-1
-# 打开 level1.html 或使用本地服务器
-```
-
-**Level-2:**
-```bash
-git checkout Level-2
-# 打开 eeeeee/index.html
-```
-
-**Level-3:**
-```bash
-git checkout level-3
-# 打开 team-work/web_game/index.html
-```
 
 ## 📊 技术栈
 
