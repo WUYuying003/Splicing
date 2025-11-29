@@ -1,4 +1,4 @@
-# 🎮 Splicing - Pixel Art Puzzle Game
+<img width="1399" height="803" alt="微信图片_20251129150143_329_1325" src="https://github.com/user-attachments/assets/3d81009b-a26c-4fc9-bbaf-b6d8da0adf78" /># 🎮 Splicing - Pixel Art Puzzle Game
 🙌A multi-level pixel art style game project, with each level using a different color theme and gameplay mechanics.
 
  🔑 Play three games to get the corresponding passwords to unlock a mysterious Easter egg!
@@ -71,7 +71,8 @@ https://github.com/user-attachments/assets/ad9cda69-8614-4581-8c86-c927626b22dc
 **Game Preview:**
 - 👆 [Level-3: Fingertip Magic](https://mckenzieaaa.github.io/Splicing/level-3/) - AI gesture recognition game![鎸囧皷8 7mb](https://github.com/user-attachments/assets/62476c37-3bd1-46aa-adb7-b8a43c05e11c)
 
-  <img width="1404" height="812" alt="f960291294f0b0d9c9d7ea74f8106dbc" src="https://github.com/user-attachments/assets/220cc6ad-9fc2-468e-a700-f38398848c46" /><img width="1396" height="799" alt="78f4e8ed75e45a949f691d9baf723114" src="https://github.com/user-attachments/assets/970211e7-c5bf-499c-8732-30babb7efe15" /><img width="1407" height="780" alt="4d095aff85c8c33dace1838a08c4524c" src="https://github.com/user-attachments/assets/00e90047-637d-4fc1-b6e1-dce618a3601f" />
+  <img width="1404" height="812" alt="f960291294f0b0d9c9d7ea74f8106dbc" src="https://github.com/user-attachments/assets/220cc6ad-9fc2-468e-a700-f38398848c46" /><img width="1396" height="799" alt="78f4e8ed75e45a949f691d9baf723114" src="https://github.com/user-attachments/assets/970211e7-c5bf-499c-8732-30babb7efe15" />
+<img width="1399" height="803" alt="20251129150143_329_1325" src="https://github.com/user-attachments/assets/b9575b3e-a249-486c-bc01-24bb750a4a3d" />
 
 ## 🔑 Game Password System
 A password will be displayed after each level is completed, which is used to unlock the next level:
@@ -79,6 +80,7 @@ A password will be displayed after each level is completed, which is used to unl
 - Level 1 → `1030`
 - Level 2 → `1218`  
 - Level 3 → `0218`
+
 
 ## 👥 Teamwork
 This project uses a branching development approach, with each team member responsible for one level:
