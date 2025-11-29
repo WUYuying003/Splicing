@@ -350,22 +350,19 @@
                 num: '01', 
                 title: 'BLACK & WHITE', 
                 desc: '平台跳跃解谜 | 收集3个物品',
-                url: 'level-1/level1.html',
-                keyHint: '🔑 通关密钥: 1030'
+                url: 'level-1/level1.html'
             },
             2: { 
                 num: '02', 
                 title: 'COOL COLORS', 
                 desc: '魔法猫咪冒险 | 收集30个金币',
-                url: 'level-2/index.html',
-                keyHint: '🔑 通关密钥: 1218'
+                url: 'level-2/index.html'
             },
             3: { 
                 num: '03', 
                 title: 'WARM COLORS', 
                 desc: '手势追踪挑战 | 完成收集任务',
-                url: 'level-3/index.html',
-                keyHint: '🔑 通关密钥: 0218'
+                url: 'level-3/index.html'
             }
         };
         
@@ -407,15 +404,12 @@
             state.unlocked.forEach(level => {
                 const l = LEVELS[level];
                 if (l) {
-                    const keyHintHTML = l.keyHint ? `<div class="key-hint">${l.keyHint}</div>` : '';
-                    
                     levelsHTML += `
                         <div class="level-card">
                             <div class="level-num">${l.num}</div>
                             <div class="level-title">${l.title}</div>
                             <div class="level-desc">${l.desc}</div>
                             <a href="${l.url}" class="play-btn">▶ PLAY</a>
-                            ${keyHintHTML}
                         </div>
                     `;
                 }
