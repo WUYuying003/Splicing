@@ -1,19 +1,27 @@
 # 🎮 Splicing - Pixel Art Puzzle Game
-A multi-level pixel art style game project, with each level using a different color theme and gameplay mechanics.
+🤡A multi-level pixel art style game project, with each level using a different color theme and gameplay mechanics.
 
  🔑 Play three games to get the corresponding passwords to unlock a mysterious Easter egg!
 
-## 🌐 Game web interface construction
+## 🌐 Play Game Now！
 https://mckenzieaaa.github.io/Splicing/
 
 ## 🎦 Game web interface construction
-- 界面的初始状态为纯黑配色
+- The interface initially features a pure black color scheme.
+![ae3c946ba134b4d3a4934bd78da8fe67](https://github.com/user-attachments/assets/44e3ff83-842d-4175-b662-c9f3cd00e800)
 
-- 用密钥解锁第二关并通关后，界面会变换为.
+- After unlocking the first level with the key and passing the level, the interface will change to:
+![f9b50105875a2f632db71c2280d977c5](https://github.com/user-attachments/assets/4b451493-d1d9-4469-8612-953998f68daf)
 
-- 用密钥解锁第二关并通关后，界面会变换为.
+- After unlocking the second level with the key and passing the level, the interface will change to:
+![f0de52a911f6d7e90a124f112601f7c9](https://github.com/user-attachments/assets/89a66faa-bcfe-43ce-81d7-0903e70b6ace)
 
-- 用密钥解锁第三关并通关后，界面会变换为.
+- After unlocking the third level with the key and passing the level, the interface will change to:
+![269b52decc0ea7b60deb3fe03779d95d](https://github.com/user-attachments/assets/d31178cb-298a-4b53-bec3-295a5864b747)
+
+## 🌄 Interface Easter Eggs:
+- The pixelated image of the Hong Kong Polytechnic University building gradually appears as you unlock levels.
+![0a0d4b1889ca8c1e9d87fd9cc20e943c](https://github.com/user-attachments/assets/b7db9950-64f3-452a-883f-916ea9e92c62)![b824143a0bc821c5fa38c07c90648a48](https://github.com/user-attachments/assets/6635870d-25c7-4c84-9389-7a43578a05f4)<img width="1455" height="825" alt="bcc5435fec9e656c4e467e9980601e67" src="https://github.com/user-attachments/assets/e649fae0-068b-4c97-b954-fc569d71fa50" /><img width="1456" height="828" alt="32282f8c78336299b6a23cab3a1ac4f5" src="https://github.com/user-attachments/assets/0b79ffe3-5b8d-49ca-8dc9-2cf36d6fe413" /><img width="1460" height="826" alt="152a0d783ef3cd7d427ace3e55258be4" src="https://github.com/user-attachments/assets/c37834f0-d6dd-4a4c-ad5a-ab6ac412cf28" />
 
 ### 🎯 Level Branches
 
@@ -22,14 +30,6 @@ https://mckenzieaaa.github.io/Splicing/
 | **Level-1** | A SIMPLE JOURNEY | ✅ Finish | 1,334 lines | A word collection game where you memorize words to solve puzzles. |
 | **Level-2** | I AM THE MOST MAGICAL CAT | ✅ Finish | 1,005 lines | Jumping adventure game, collect coins and avoid obstacles |
 | **level-3** | Fingertip Magic | ✅ Finish | 1,771 lines | Gesture tracking collection game using AI technology |
-
-## 📊 technology stack
-
-- **纯 HTML5 Canvas** - 游戏渲染
-- **原生 JavaScript** - 游戏逻辑
-- **CSS3** - 样式和动画
-- **MediaPipe (Level-3)** - AI手势识别
-- **像素字体** - 复古游戏风格
 
 ## 🎨 Level Details
 
@@ -83,9 +83,9 @@ A password will be displayed after each level is completed, which is used to unl
 
 ## 👥 团队协作
 
-本项目采用分支式开发，每个团队成员负责一个关卡：
+This project uses a branching development approach, with each team member responsible for one level:
 
-1. **成员 A** - Level-1 (黑白关卡) ✅ 完成
-2. **成员 B** - Level-2 (猫咪游戏) ✅ 完成
-3. **成员 C** - level-3 (手势追踪游戏) ✅ 完成
+1. **OUYANG Xinran** - Level-1 (A SIMPLE JOURNEY) 
+2. **WANG Yuzixuan** - Level-2 (I AM THE MOST MAGICAL CAT) 
+3. **WU Yuying** - level-3 (Fingertip Magic) 
 
