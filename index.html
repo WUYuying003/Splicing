@@ -282,6 +282,46 @@
             border-left-color: #667eea;
         }
         
+        /* 进度查看器 */
+        .progress-viewer {
+            margin-top: 50px;
+            padding: 30px;
+            border-top: 3px solid #000;
+            text-align: center;
+        }
+        
+        .progress-viewer h3 {
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        
+        .stage-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .stage-btn {
+            padding: 12px 20px;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 9px;
+            background: #000;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .stage-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .stage-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
         @media (max-width: 768px) {
             .main-title { font-size: 36px; }
             .desktop-area { padding: 40px 25px; }
@@ -335,6 +375,17 @@
         
         <!-- 关卡卡片 -->
         <div class="levels-grid" id="levelsContainer"></div>
+        
+        <!-- 进度查看器 (仅在100%完成时显示) -->
+        <div class="progress-viewer" id="progressViewer" style="display: none;">
+            <h3>🎨 回顾游戏进化历程</h3>
+            <div class="stage-buttons">
+                <button class="stage-btn" onclick="switchStage(0)">黑白世界</button>
+                <button class="stage-btn" onclick="switchStage(1)">灰度觉醒</button>
+                <button class="stage-btn" onclick="switchStage(2)">冷色浸染</button>
+                <button class="stage-btn" onclick="switchStage(3)">全彩绽放</button>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -367,6 +418,15 @@
         };
         
         function loadState() {
+            // 清除旧版本的localStorage数据，强制重新开始
+            const currentVersion = 'v2';
+            const savedVersion = localStorage.getItem('splicing_version');
+            
+            if (savedVersion !== currentVersion) {
+                localStorage.removeItem('splicing_state_v1');
+                localStorage.setItem('splicing_version', currentVersion);
+            }
+            
             try {
                 const saved = localStorage.getItem('splicing_state_v1');
                 if (saved) {
@@ -386,9 +446,11 @@
         }
         
         let state = loadState();
+        let viewStage = null; // 用于查看历史阶段
         
         function updateTheme() {
-            document.body.className = `stage-${state.stage}`;
+            const displayStage = viewStage !== null ? viewStage : state.stage;
+            document.body.className = `stage-${displayStage}`;
         }
         
         function render() {
@@ -416,6 +478,35 @@
             });
             
             container.innerHTML = levelsHTML;
+            
+            // 显示/隐藏进度查看器（仅在完成所有关卡后显示）
+            const viewer = document.getElementById('progressViewer');
+            if (state.stage === 3) {
+                viewer.style.display = 'block';
+            } else {
+                viewer.style.display = 'none';
+            }
+            
+            // 更新按钮状态
+            updateStageButtons();
+        }
+        
+        function switchStage(stage) {
+            viewStage = stage;
+            updateTheme();
+            updateStageButtons();
+        }
+        
+        function updateStageButtons() {
+            const buttons = document.querySelectorAll('.stage-btn');
+            const currentStage = viewStage !== null ? viewStage : state.stage;
+            buttons.forEach((btn, idx) => {
+                if (idx === currentStage) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
         }
         
         function submit() {
