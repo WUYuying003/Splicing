@@ -16,14 +16,11 @@
         body {
             font-family: 'Press Start 2P', monospace;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             transition: all 1s ease;
-            overflow: hidden;
+            overflow-x: hidden;
         }
         
-        /* 渐进式颜色主题 */
+        /* 渐进式颜色主题 - 背景渐变 */
         body.stage-0 { 
             background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
             color: #ffffff;
@@ -41,47 +38,82 @@
             color: #ffffff;
         }
         
-        #app {
-            max-width: 900px;
-            width: 90%;
-            padding: 50px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 3px solid currentColor;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
+        /* 像素波浪边框 */
+        .pixel-wave {
+            height: 40px;
+            background: currentColor;
+            clip-path: polygon(
+                0 50%, 2% 45%, 4% 40%, 6% 45%, 8% 50%, 10% 45%, 12% 40%, 14% 45%, 16% 50%,
+                18% 45%, 20% 40%, 22% 45%, 24% 50%, 26% 45%, 28% 40%, 30% 45%, 32% 50%,
+                34% 45%, 36% 40%, 38% 45%, 40% 50%, 42% 45%, 44% 40%, 46% 45%, 48% 50%,
+                50% 45%, 52% 40%, 54% 45%, 56% 50%, 58% 45%, 60% 40%, 62% 45%, 64% 50%,
+                66% 45%, 68% 40%, 70% 45%, 72% 50%, 74% 45%, 76% 40%, 78% 45%, 80% 50%,
+                82% 45%, 84% 40%, 86% 45%, 88% 50%, 90% 45%, 92% 40%, 94% 45%, 96% 50%,
+                98% 45%, 100% 40%, 100% 100%, 0 100%
+            );
+            opacity: 0.3;
         }
         
-        .title {
-            font-size: 32px;
+        /* 主标题区 */
+        .hero {
+            padding: 80px 40px 60px;
             text-align: center;
-            margin-bottom: 15px;
-            letter-spacing: 4px;
+        }
+        
+        .main-title {
+            font-size: 64px;
+            letter-spacing: 8px;
+            margin-bottom: 20px;
             animation: glow 2s ease-in-out infinite alternate;
         }
         
         @keyframes glow {
-            from { text-shadow: 0 0 5px currentColor; }
-            to { text-shadow: 0 0 20px currentColor, 0 0 30px currentColor; }
+            from { text-shadow: 0 0 10px currentColor; }
+            to { text-shadow: 0 0 25px currentColor, 0 0 40px currentColor; }
         }
         
-        .subtitle {
+        .main-subtitle {
+            font-size: 14px;
+            letter-spacing: 3px;
+            opacity: 0.9;
+        }
+        
+        /* Desktop标签 */
+        .desktop-label {
             text-align: center;
-            font-size: 10px;
-            margin-bottom: 40px;
+            font-size: 20px;
+            margin: 40px 0;
             opacity: 0.8;
         }
         
-        .input-section {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            margin-bottom: 40px;
-            border: 2px solid currentColor;
+        /* 主内容区 - 白色桌面 */
+        .desktop-area {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 60px 50px;
+            box-shadow: 0 -10px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        body.stage-0 .desktop-area { background: #f5f5f5; color: #000; }
+        body.stage-1 .desktop-area { background: #f5f5f5; color: #000; }
+        body.stage-2 .desktop-area { background: #f5f5f5; color: #000; }
+        body.stage-3 .desktop-area { background: #ffffff; color: #000; }
+        
+        /* 密钥输入区 */
+        .key-section {
+            background: rgba(0, 0, 0, 0.05);
+            padding: 40px;
+            margin-bottom: 50px;
+            border: 3px solid #000;
             text-align: center;
         }
         
-        .input-section h3 {
+        .key-section h3 {
             font-size: 14px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            color: #000;
         }
         
         .input-group {
@@ -93,103 +125,141 @@
         }
         
         .key-input {
-            width: 200px;
-            padding: 15px;
+            width: 220px;
+            padding: 18px;
             font-family: 'Press Start 2P', monospace;
             font-size: 14px;
             text-align: center;
-            border: 2px solid currentColor;
-            background: rgba(0, 0, 0, 0.3);
-            color: currentColor;
-        }
-        
-        .key-input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
+            border: 3px solid #000;
+            background: #fff;
+            color: #000;
         }
         
         .submit-btn {
-            padding: 15px 30px;
+            padding: 18px 35px;
             font-family: 'Press Start 2P', monospace;
             font-size: 12px;
-            background: currentColor;
-            color: #000;
+            background: #000;
+            color: #fff;
             border: none;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s;
         }
         
-        body.stage-0 .submit-btn { color: #000; }
-        body.stage-1 .submit-btn { color: #000; }
-        body.stage-2 .submit-btn { color: #2c3e50; }
-        body.stage-3 .submit-btn { color: #fff; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        body.stage-3 .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
         
         .submit-btn:hover {
             transform: scale(1.05);
         }
         
         .msg {
-            margin-top: 15px;
-            font-size: 10px;
-            min-height: 20px;
+            margin-top: 20px;
+            font-size: 11px;
+            min-height: 25px;
+            color: #000;
         }
         
-        .levels {
+        /* 统计数据区 */
+        .stats-grid {
             display: grid;
-            gap: 25px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin: 60px 0;
         }
         
-        .level {
-            padding: 30px;
-            border: 2px solid currentColor;
-            background: rgba(255, 255, 255, 0.05);
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            margin-bottom: 10px;
+            color: #000;
+        }
+        
+        body.stage-3 .stat-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stat-label {
+            font-size: 10px;
+            opacity: 0.7;
+            color: #000;
+        }
+        
+        /* WHO WE ARE 标题 */
+        .section-title {
+            font-size: 36px;
+            text-align: center;
+            margin: 60px 0 40px;
+            letter-spacing: 4px;
+            color: #000;
+        }
+        
+        /* 关卡卡片网格 */
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+            margin-bottom: 60px;
+        }
+        
+        .level-card {
+            background: #fff;
+            border: 4px solid #000;
+            padding: 35px;
+            text-align: center;
             transition: all 0.3s;
+            position: relative;
         }
         
-        .level:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateX(10px);
-        }
+        body.stage-0 .level-card { background: #e0e0e0; }
+        body.stage-1 .level-card { background: #e8e8e8; }
+        body.stage-2 .level-card { background: #f0f0f0; }
         
-        .level-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
+        .level-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 8px 8px 0 #000;
         }
         
         .level-num {
-            font-size: 36px;
+            font-size: 42px;
+            margin-bottom: 15px;
+            color: #000;
         }
         
         .level-title {
-            font-size: 18px;
+            font-size: 16px;
+            margin-bottom: 20px;
             letter-spacing: 2px;
+            color: #000;
         }
         
         .level-desc {
-            font-size: 10px;
-            margin-bottom: 20px;
+            font-size: 9px;
+            line-height: 1.8;
+            margin-bottom: 25px;
             opacity: 0.7;
-            line-height: 1.6;
+            color: #000;
         }
         
         .play-btn {
             display: inline-block;
-            padding: 12px 25px;
-            background: currentColor;
-            color: #000;
+            padding: 15px 30px;
+            background: #000;
+            color: #fff;
             text-decoration: none;
             font-size: 11px;
             transition: all 0.3s;
-            border: none;
             font-family: 'Press Start 2P', monospace;
         }
         
-        body.stage-0 .play-btn { color: #000; }
-        body.stage-1 .play-btn { color: #000; }
-        body.stage-2 .play-btn { color: #2c3e50; }
-        body.stage-3 .play-btn { 
-            color: #fff; 
+        body.stage-3 .play-btn {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
         
@@ -198,28 +268,74 @@
         }
         
         .key-hint {
-            margin-top: 15px;
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            font-size: 9px;
-            border-left: 3px solid currentColor;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.05);
+            font-size: 8px;
+            border-left: 4px solid #000;
+            text-align: left;
+            color: #000;
         }
         
-        body.stage-2 .key-hint,
         body.stage-3 .key-hint {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
             border-left-color: #667eea;
         }
         
         @media (max-width: 768px) {
-            #app { padding: 30px 20px; }
-            .title { font-size: 24px; }
-            .level-header { flex-direction: column; gap: 10px; }
+            .main-title { font-size: 36px; }
+            .desktop-area { padding: 40px 25px; }
+            .stats-grid { grid-template-columns: 1fr; gap: 30px; }
+            .levels-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body class="stage-0">
-    <div id="app"></div>
+    <div class="pixel-wave"></div>
+    
+    <!-- 主标题区 -->
+    <div class="hero">
+        <h1 class="main-title">SPLICING</h1>
+        <p class="main-subtitle">PIXEL ART JOURNEY</p>
+    </div>
+    
+    <!-- Desktop标签 -->
+    <div class="desktop-label">desktop</div>
+    
+    <!-- 白色桌面区域 -->
+    <div class="desktop-area">
+        <!-- 密钥输入区 -->
+        <div class="key-section">
+            <h3>🔑 输入通关密钥解锁新关卡</h3>
+            <div class="input-group">
+                <input type="text" id="keyInput" class="key-input" placeholder="输入4位密钥" maxlength="4">
+                <button class="submit-btn" onclick="submit()">SUBMIT</button>
+            </div>
+            <div class="msg" id="msg"></div>
+        </div>
+        
+        <!-- 统计数据区 -->
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">3</div>
+                <div class="stat-label">LEVELS</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">CREATIVITY</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">PIXEL ART</div>
+            </div>
+        </div>
+        
+        <!-- WHO WE ARE 标题 -->
+        <div class="section-title">WHO WE ARE?</div>
+        
+        <!-- 关卡卡片 -->
+        <div class="levels-grid" id="levelsContainer"></div>
+    </div>
 
     <script>
         // 密钥映射 - 修正密码：Level 2 密码是 1218，Level 3 密码是 0218
@@ -285,45 +401,27 @@
             
             updateTheme();
             
+            const container = document.getElementById('levelsContainer');
             let levelsHTML = '';
+            
             state.unlocked.forEach(level => {
                 const l = LEVELS[level];
                 if (l) {
                     const keyHintHTML = l.keyHint ? `<div class="key-hint">${l.keyHint}</div>` : '';
                     
                     levelsHTML += `
-                        <div class="level">
-                            <div class="level-header">
-                                <div class="level-num">${l.num}</div>
-                                <div class="level-title">${l.title}</div>
-                            </div>
+                        <div class="level-card">
+                            <div class="level-num">${l.num}</div>
+                            <div class="level-title">${l.title}</div>
                             <div class="level-desc">${l.desc}</div>
-                            <a href="${l.url}" class="play-btn">▶ PLAY GAME</a>
+                            <a href="${l.url}" class="play-btn">▶ PLAY</a>
                             ${keyHintHTML}
                         </div>
                     `;
                 }
             });
             
-            const stageText = ['初始状态 - 黑白世界', '第一阶段 - 灰度觉醒', '第二阶段 - 冷色浸染', '最终形态 - 全彩绽放'][state.stage];
-            
-            document.getElementById('app').innerHTML = `
-                <h1 class="title">SPLICING</h1>
-                <div class="subtitle">像素解谜之旅 · ${stageText}</div>
-                
-                <div class="input-section">
-                    <h3>🔑 输入通关密钥解锁新关卡</h3>
-                    <div class="input-group">
-                        <input type="text" id="keyInput" class="key-input" placeholder="输入4位密钥" maxlength="4">
-                        <button class="submit-btn" onclick="submit()">SUBMIT</button>
-                    </div>
-                    <div class="msg" id="msg"></div>
-                </div>
-                
-                <div class="levels">
-                    ${levelsHTML}
-                </div>
-            `;
+            container.innerHTML = levelsHTML;
         }
         
         function submit() {
