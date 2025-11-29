@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Splicing - 拼豆像素之旅</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+            transition: background 0.8s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* 拼豆板背景网格 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at center, rgba(0,0,0,0.12) 1.5px, transparent 1.5px);
+            background-size: 20px 20px;
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* Stage 0: 初始状态 - 浅灰拼豆板 */
+        body.stage-0 {
+            background: #e8e8e8;
+            color: #2c3e50;
+        }
+        
+        body.stage-0::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(255,255,255,0.3) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(200,200,200,0.2) 0%, transparent 50%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        /* Stage 1: Level 1 解锁 - 黑白灰拼豆 */
+        body.stage-1 {
+            background: #3a3a3a;
+            color: #ecf0f1;
+        }
+        
+        body.stage-1::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 30% 40%, rgba(80,80,80,0.5) 0%, transparent 40%),
+                radial-gradient(circle at 70% 60%, rgba(100,100,100,0.5) 0%, transparent 40%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        /* Stage 2: Level 2 解锁 - 黑白灰 + 蓝绿拼豆 */
+        body.stage-2 {
+            background: #2c3e50;
+            color: #ecf0f1;
+        }
+        
+        body.stage-2::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(41,128,185,0.4) 0%, transparent 35%),
+                radial-gradient(circle at 80% 70%, rgba(39,174,96,0.4) 0%, transparent 35%),
+                radial-gradient(circle at 50% 50%, rgba(100,100,100,0.2) 0%, transparent 50%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        /* Stage 3: Level 3 解锁 - 完整彩色拼豆 */
+        body.stage-3 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+        }
+        
+        body.stage-3::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(102,126,234,0.5) 0%, transparent 30%),
+                radial-gradient(circle at 85% 80%, rgba(240,147,251,0.5) 0%, transparent 30%),
+                radial-gradient(circle at 50% 10%, rgba(255,159,124,0.4) 0%, transparent 35%),
+                radial-gradient(circle at 70% 50%, rgba(79,172,254,0.4) 0%, transparent 30%),
+                radial-gradient(circle at 30% 80%, rgba(243,156,18,0.3) 0%, transparent 25%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        /* 拼豆板主容器 - 1920x1080 比例 */
+        .pegboard {
+            width: 100vw;
+            height: 100vh;
+            max-width: 1920px;
+            max-height: 1080px;
+            aspect-ratio: 16 / 9;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 24px;
+            box-shadow: 
+                0 0 0 12px rgba(50, 50, 50, 0.15),
+                0 8px 0 12px rgba(40, 40, 40, 0.1),
+                0 30px 80px rgba(0, 0, 0, 0.4),
+                inset 0 2px 4px rgba(255, 255, 255, 0.8),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.8s ease;
+            position: relative;
+            z-index: 1;
+            overflow-y: auto;
+        }
+        
+        body.stage-0 .pegboard {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 
+                0 0 0 12px rgba(180, 180, 180, 0.3),
+                0 6px 0 12px rgba(160, 160, 160, 0.2),
+                0 15px 40px rgba(0, 0, 0, 0.15),
+                inset 0 2px 4px rgba(255, 255, 255, 1);
+        }
+        
+        body.stage-1 .pegboard {
+            background: rgba(70, 70, 70, 0.95);
+            box-shadow: 
+                0 0 0 12px rgba(30, 30, 30, 0.5),
+                0 8px 0 12px rgba(20, 20, 20, 0.4),
+                0 30px 80px rgba(0, 0, 0, 0.6),
+                inset 0 2px 4px rgba(100, 100, 100, 0.5);
+        }
+        
+        body.stage-2 .pegboard {
+            background: rgba(52, 73, 94, 0.95);
+            box-shadow: 
+                0 0 0 12px rgba(30, 50, 70, 0.5),
+                0 8px 0 12px rgba(20, 40, 60, 0.4),
+                0 30px 80px rgba(0, 0, 0, 0.5),
+                inset 0 2px 4px rgba(70, 100, 120, 0.5);
+        }
+        
+        body.stage-3 .pegboard {
+            background: rgba(102, 126, 234, 0.25);
+            backdrop-filter: blur(20px);
+            box-shadow: 
+                0 0 0 12px rgba(102, 126, 234, 0.3),
+                0 8px 0 12px rgba(118, 75, 162, 0.3),
+                0 30px 80px rgba(0, 0, 0, 0.4),
+                inset 0 2px 4px rgba(255, 255, 255, 0.3);
+        }
+        
+        /* 内部拼豆板内容区 */
+        .pegboard-content {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 60px 80px;
+            position: relative;
+            min-height: calc(100vh - 48px);
+            max-height: calc(1080px - 48px);
+        }
+        
+        body.stage-0 .pegboard-content {
+            background: rgba(0, 0, 0, 0.02);
+        }
+        
+        body.stage-1 .pegboard-content {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        body.stage-2 .pegboard-content {
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        body.stage-3 .pegboard-content {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 40px;
+            text-shadow: 
+                3px 3px 0 rgba(0, 0, 0, 0.2),
+                -1px -1px 0 rgba(255, 255, 255, 0.3);
+            transition: all 0.5s ease;
+            letter-spacing: 4px;
+        }
+        
+        body.stage-0 h1 {
+            color: #2c3e50;
+            text-shadow: 
+                2px 2px 0 rgba(0, 0, 0, 0.1),
+                -1px -1px 0 rgba(255, 255, 255, 0.5);
+        }
+        
+        .subtitle {
+            text-align: center;
+            margin-bottom: 35px;
+            font-size: 11px;
+            opacity: 0.85;
+            letter-spacing: 1px;
+        }
+        
+        /* 拼豆进度条 */
+        .progress-container {
+            margin: 35px 0;
+            padding: 8px;
+            background: rgba(0, 0, 0, 0.15);
+            border-radius: 20px;
+            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+        
+        .progress-bar {
+            height: 24px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #2ecc71, #3498db, #9b59b6);
+            border-radius: 16px;
+            transition: width 0.8s ease;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* 拼豆珠效果 */
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at center, rgba(255,255,255,0.5) 30%, transparent 30%);
+            background-size: 12px 12px;
+            border-radius: 16px;
+        }
+        
+        /* 密钥输入区 - 拼豆框架风格 */
+        .key-input-section {
+            text-align: center;
+            margin-bottom: 35px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            box-shadow: 
+                inset 0 2px 8px rgba(0, 0, 0, 0.1),
+                0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.stage-0 .key-input-section {
+            background: rgba(0, 0, 0, 0.04);
+        }
+        
+        .key-input-section label {
+            display: block;
+            margin-bottom: 18px;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+        
+        .key-input {
+            width: 220px;
+            padding: 16px;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 16px;
+            text-align: center;
+            border: 4px solid rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #2c3e50;
+            margin-right: 15px;
+            box-shadow: 
+                inset 0 2px 6px rgba(0, 0, 0, 0.1),
+                0 4px 0 rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .key-input:focus {
+            outline: none;
+            border-color: #3498db;
+            transform: translateY(-2px);
+            box-shadow: 
+                inset 0 2px 6px rgba(52, 152, 219, 0.2),
+                0 6px 0 rgba(52, 152, 219, 0.2),
+                0 8px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .submit-key-btn {
+            padding: 16px 32px;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 13px;
+            border: 4px solid rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            background: linear-gradient(180deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 6px 0 rgba(0, 0, 0, 0.2),
+                0 8px 20px rgba(52, 152, 219, 0.4);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        body.stage-0 .submit-key-btn {
+            background: linear-gradient(180deg, #34495e 0%, #2c3e50 100%);
+            box-shadow: 
+                0 6px 0 rgba(0, 0, 0, 0.2),
+                0 8px 20px rgba(44, 62, 80, 0.3);
+        }
+        
+        .submit-key-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 8px 0 rgba(0, 0, 0, 0.2),
+                0 12px 25px rgba(52, 152, 219, 0.5);
+        }
+        
+        .submit-key-btn:active {
+            transform: translateY(2px);
+            box-shadow: 
+                0 2px 0 rgba(0, 0, 0, 0.2),
+                0 4px 10px rgba(52, 152, 219, 0.3);
+        }
+        
+        .message {
+            text-align: center;
+            margin-top: 18px;
+            font-size: 11px;
+            min-height: 25px;
+            transition: all 0.3s ease;
+            padding: 8px;
+            border-radius: 8px;
+        }
+        
+        .message.success {
+            color: #2ecc71;
+            background: rgba(46, 204, 113, 0.1);
+        }
+        
+        .message.error {
+            color: #e74c3c;
+            background: rgba(231, 76, 60, 0.1);
+        }
+        
+        /* 拼豆关卡卡片 */
+        .levels {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+            justify-content: center;
+        }
+        
+        .bead-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 6px solid rgba(0, 0, 0, 0.15);
+            border-radius: 20px;
+            padding: 35px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 8px 0 rgba(0, 0, 0, 0.1),
+                0 12px 30px rgba(0, 0, 0, 0.2),
+                inset 0 2px 4px rgba(255, 255, 255, 0.8);
+        }
+        
+        body.stage-1 .bead-card,
+        body.stage-2 .bead-card,
+        body.stage-3 .bead-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* 拼豆顶部装饰条 */
+        .bead-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 12px;
+            background-image: 
+                radial-gradient(circle at center, currentColor 40%, transparent 40%);
+            background-size: 16px 12px;
+            opacity: 0.6;
+        }
+        
+        .bead-card.level-1::before {
+            color: #2c3e50;
+        }
+        
+        .bead-card.level-2::before {
+            color: #3498db;
+        }
+        
+        .bead-card.level-3::before {
+            color: #e74c3c;
+        }
+        
+        .bead-card.locked {
+            display: none; /* 完全隐藏未解锁关卡 */
+        }
+        
+        .bead-card.unlocked {
+            opacity: 1;
+            filter: grayscale(0%);
+            display: block;
+        }
+        
+        .bead-card:hover:not(.locked) {
+            transform: translateY(-8px);
+            box-shadow: 
+                0 12px 0 rgba(0, 0, 0, 0.15),
+                0 20px 50px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .level-number {
+            font-size: 64px;
+            margin-bottom: 18px;
+            text-shadow: 
+                3px 3px 0 rgba(0, 0, 0, 0.15),
+                -1px -1px 0 rgba(255, 255, 255, 0.3);
+        }
+        
+        body.stage-0 .level-number {
+            color: #2c3e50;
+        }
+        
+        body.stage-1 .level-number,
+        body.stage-2 .level-number,
+        body.stage-3 .level-number {
+            color: #ecf0f1;
+        }
+        
+        .level-title {
+            font-size: 18px;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+        
+        body.stage-0 .level-title {
+            color: #34495e;
+        }
+        
+        .level-desc {
+            font-size: 10px;
+            margin-bottom: 22px;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+        
+        .level-status {
+            display: inline-block;
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-size: 9px;
+            margin-bottom: 18px;
+            font-weight: bold;
+            box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
+        }
+        
+        .status-locked {
+            background: rgba(149, 165, 166, 0.4);
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .status-unlocked {
+            background: rgba(46, 204, 113, 0.9);
+            color: white;
+            border: 3px solid rgba(39, 174, 96, 0.5);
+        }
+        
+        .play-btn {
+            display: inline-block;
+            background: linear-gradient(180deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 18px 40px;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 12px;
+            transition: all 0.3s ease;
+            border: 4px solid rgba(0, 0, 0, 0.2);
+            box-shadow: 
+                0 6px 0 rgba(0, 0, 0, 0.15),
+                0 10px 25px rgba(52, 152, 219, 0.3);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        body.stage-0 .play-btn {
+            background: linear-gradient(180deg, #34495e 0%, #2c3e50 100%);
+            box-shadow: 
+                0 6px 0 rgba(0, 0, 0, 0.15),
+                0 10px 25px rgba(44, 62, 80, 0.2);
+        }
+        
+        .play-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 8px 0 rgba(0, 0, 0, 0.15),
+                0 14px 35px rgba(52, 152, 219, 0.4);
+        }
+        
+        .play-btn:active {
+            transform: translateY(2px);
+            box-shadow: 
+                0 2px 0 rgba(0, 0, 0, 0.15),
+                0 6px 15px rgba(52, 152, 219, 0.2);
+        }
+        
+        .locked-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 56px;
+            opacity: 0.3;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .info-section {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 25px;
+            font-size: 10px;
+            line-height: 2;
+            margin-top: 25px;
+            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.stage-0 .info-section {
+            background: rgba(0, 0, 0, 0.04);
+            color: #2c3e50;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+                letter-spacing: 2px;
+            }
+            
+            .levels {
+                grid-template-columns: 1fr;
+            }
+            
+            .key-input {
+                width: 170px;
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+            
+            .submit-key-btn {
+                font-size: 11px;
+                padding: 14px 28px;
+            }
+        }
+    </style>
+</head>
+<body class="stage-0">
+    <div class="pegboard">
+        <div class="pegboard-content">
+            <h1>🎨 SPLICING</h1>
+            <p class="subtitle">拼豆像素之旅 - 从黑白到彩色</p>
+            
+            <!-- 拼豆进度条 -->
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                </div>
+            </div>
+            
+            <!-- 密钥输入区 -->
+            <div class="key-input-section">
+                <label for="keyInput">🔑 输入通关密钥解锁下一关卡</label>
+                <input type="text" id="keyInput" class="key-input" placeholder="输入密钥" maxlength="4">
+                <button class="submit-key-btn" onclick="submitKey()">提交</button>
+                <div class="message" id="message"></div>
+            </div>
+            
+            <!-- 拼豆关卡卡片 -->
+            <div class="levels">
+                <!-- Level 1 -->
+                <div class="bead-card level-1 unlocked" id="level1" data-level="1">
+                    <div class="level-number">01</div>
+                    <div class="level-title">黑白世界</div>
+                    <div class="level-desc">
+                        平台跳跃冒险<br>
+                        探索纯粹的黑白拼豆世界<br>
+                        通关密钥: 1030
+                    </div>
+                    <div class="level-status status-unlocked">🔓 已解锁</div>
+                    <br>
+                    <a href="level-1/level1.html" class="play-btn">
+                        开始游戏 →
+                    </a>
+                </div>
+                
+                <!-- Level 2 -->
+                <div class="bead-card level-2 locked" id="level2" data-level="2">
+                    <div class="locked-overlay">🔒</div>
+                    <div class="level-number">02</div>
+                    <div class="level-title">冷色觉醒</div>
+                    <div class="level-desc">
+                        魔法猫咪冒险<br>
+                        解锁蓝绿拼豆双色世界<br>
+                        需要Level 1通关密钥
+                    </div>
+                    <div class="level-status status-locked">🔒 已锁定</div>
+                    <br>
+                    <a href="level-2/level2.html" class="play-btn">
+                        开始游戏 →
+                    </a>
+                </div>
+                
+                <!-- Level 3 -->
+                <div class="bead-card level-3 locked" id="level3" data-level="3">
+                    <div class="locked-overlay">🔒</div>
+                    <div class="level-number">03</div>
+                    <div class="level-title">暖色绽放</div>
+                    <div class="level-desc">
+                        手势追踪收集<br>
+                        解锁完整彩色拼豆世界<br>
+                        需要Level 2通关密钥
+                    </div>
+                    <div class="level-status status-locked">🔒 已锁定</div>
+                    <br>
+                    <a href="level-3/index.html" class="play-btn">
+                        开始游戏 →
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 信息区域 -->
+            <div class="info-section" id="infoSection">
+                <strong>📖 当前状态：</strong> 初始阶段 - 仅Level 1可用<br>
+                <strong>🎯 任务：</strong> 完成Level 1并获取通关密钥<br>
+                <strong>💡 提示：</strong> 每完成一关，拼豆板将获得新的色彩...
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 关卡密钥配置
+        const KEYS = {
+            1: '1030',
+            2: '0218',
+            3: '1218'
+        };
+        
+        // 从 localStorage 读取游戏状态
+        function loadState() {
+            const saved = localStorage.getItem('splicing_state_v1');
+            if (saved) {
+                try {
+                    return JSON.parse(saved);
+                } catch(e) {
+                    return { stage: 0, unlockedLevels: [1] };
+                }
+            }
+            return { stage: 0, unlockedLevels: [1] };
+        }
+        
+        // 保存游戏状态
+        function saveState(state) {
+            localStorage.setItem('splicing_state_v1', JSON.stringify(state));
+        }
+        
+        // 当前状态
+        let gameState = loadState();
+        
+        // 更新UI
+        function updateUI() {
+            const body = document.body;
+            const progressFill = document.getElementById('progressFill');
+            const infoSection = document.getElementById('infoSection');
+            
+            // 更新阶段样式
+            body.className = `stage-${gameState.stage}`;
+            
+            // 更新进度条
+            const progress = (gameState.stage / 3) * 100;
+            progressFill.style.width = `${progress}%`;
+            
+            // 更新关卡卡片状态
+            for (let i = 1; i <= 3; i++) {
+                const card = document.getElementById(`level${i}`);
+                const status = card.querySelector('.level-status');
+                
+                if (gameState.unlockedLevels.includes(i)) {
+                    card.classList.remove('locked');
+                    card.classList.add('unlocked');
+                    status.classList.remove('status-locked');
+                    status.classList.add('status-unlocked');
+                    status.innerHTML = '🔓 已解锁';
+                } else {
+                    card.classList.add('locked');
+                    card.classList.remove('unlocked');
+                    status.classList.add('status-locked');
+                    status.classList.remove('status-unlocked');
+                    status.innerHTML = '🔒 已锁定';
+                }
+            }
+            
+            // 更新信息区域内容
+            const stageInfo = {
+                0: {
+                    title: '初始阶段',
+                    task: '完成Level 1并获取通关密钥',
+                    hint: '这是一个从黑白到彩色的拼豆旅程...'
+                },
+                1: {
+                    title: 'Stage 1 - 黑白世界',
+                    task: '完成Level 2，解锁冷色拼豆',
+                    hint: '拼豆板开始有了深度，继续前进...'
+                },
+                2: {
+                    title: 'Stage 2 - 冷色觉醒',
+                    task: '完成Level 3，解锁完整色彩',
+                    hint: '蓝与绿的拼豆交织，最后的挑战即将到来...'
+                },
+                3: {
+                    title: 'Stage 3 - 彩色绽放',
+                    task: '恭喜完成所有关卡！',
+                    hint: '拼豆板因你而绚丽多彩！🎉'
+                }
+            };
+            
+            const info = stageInfo[gameState.stage];
+            infoSection.innerHTML = `
+                <strong>📖 当前状态：</strong> ${info.title}<br>
+                <strong>🎯 任务：</strong> ${info.task}<br>
+                <strong>💡 提示：</strong> ${info.hint}
+            `;
+        }
+        
+        // 提交密钥
+        function submitKey() {
+            const input = document.getElementById('keyInput');
+            const message = document.getElementById('message');
+            const key = input.value.trim();
+            
+            if (!key) {
+                showMessage('请输入密钥', 'error');
+                return;
+            }
+            
+            // 检查密钥
+            let levelUnlocked = null;
+            for (let level in KEYS) {
+                if (KEYS[level] === key && !gameState.unlockedLevels.includes(parseInt(level) + 1)) {
+                    levelUnlocked = parseInt(level) + 1;
+                    break;
+                }
+            }
+            
+            if (levelUnlocked) {
+                // 解锁成功
+                gameState.unlockedLevels.push(levelUnlocked);
+                gameState.stage = levelUnlocked - 1;
+                saveState(gameState);
+                
+                showMessage(`🎉 恭喜！Level ${levelUnlocked} 已解锁！`, 'success');
+                
+                // 延迟更新UI以显示动画效果
+                setTimeout(() => {
+                    updateUI();
+                    input.value = '';
+                }, 500);
+            } else {
+                showMessage('❌ 密钥错误或已使用', 'error');
+                input.value = '';
+            }
+        }
+        
+        // 显示消息
+        function showMessage(text, type) {
+            const message = document.getElementById('message');
+            message.textContent = text;
+            message.className = `message ${type}`;
+            
+            setTimeout(() => {
+                message.textContent = '';
+                message.className = 'message';
+            }, 3000);
+        }
+        
+        // 回车键提交
+        document.getElementById('keyInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                submitKey();
+            }
+        });
+        
+        // 初始化
+        updateUI();
+        
+        // 调试功能：重置游戏状态（在控制台输入 resetGame() ）
+        function resetGame() {
+            if (confirm('确定要重置游戏进度吗？')) {
+                gameState = { stage: 0, unlockedLevels: [1] };
+                saveState(gameState);
+                updateUI();
+                console.log('游戏已重置');
+            }
+        }
+    </script>
+</body>
+</html>
