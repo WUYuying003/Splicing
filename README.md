@@ -7,6 +7,7 @@
 https://mckenzieaaa.github.io/Splicing/
 
 ## 🌐 Game web interface construction
+🎨The overall interface uses a pixel art style, and the colors gradually transition from cool to vibrant as you progress through the levels.
 - The interface initially features a pure black color scheme.
 ![ae3c946ba134b4d3a4934bd78da8fe67](https://github.com/user-attachments/assets/44e3ff83-842d-4175-b662-c9f3cd00e800)
 
@@ -39,7 +40,7 @@ https://mckenzieaaa.github.io/Splicing/
 - 🏃‍♂️ Use "WASD" to control character movement.
 - 🪙 Pay attention to the words that appear in the characters' descriptions.
 - 🌄 Fill in the correct word to unlock the next narrative scene.
-- ✨ You need to try again if you make a mistake.
+- 😐 You need to try again if you make a mistake.
 
 **Game Preview:**
 - 🎮 [Level-1: A SIMPLE JOURNEY](https://mckenzieaaa.github.io/Splicing/level-1/) - Text collection decryption
