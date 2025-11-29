@@ -1,10 +1,19 @@
 # 🎮 Splicing - Pixel Art Puzzle Game
-
 A multi-level pixel art style game project, with each level using a different color theme and gameplay mechanics.
 
-## 📂 Project Structure
+ 🔑 Play three games to get the corresponding passwords to unlock a mysterious Easter egg!
 
-This project adopts**Branching development**，Each level is independent of the other two branches:
+## 🌐 Game web interface construction
+https://mckenzieaaa.github.io/Splicing/
+
+## 🎦 Game web interface construction
+- 界面的初始状态为纯黑配色
+
+- 用密钥解锁第二关并通关后，界面会变换为.
+
+- 用密钥解锁第二关并通关后，界面会变换为.
+
+- 用密钥解锁第三关并通关后，界面会变换为.
 
 ### 🎯 Level Branches
 
@@ -13,15 +22,6 @@ This project adopts**Branching development**，Each level is independent of the 
 | **Level-1** | A SIMPLE JOURNEY | ✅ Finish | 1,334 lines | A word collection game where you memorize words to solve puzzles. |
 | **Level-2** | I AM THE MOST MAGICAL CAT | ✅ Finish | 1,005 lines | Jumping adventure game, collect coins and avoid obstacles |
 | **level-3** | Fingertip Magic | ✅ Finish | 1,771 lines | Gesture tracking collection game using AI technology |
-
-## 🌐 Game Overview
-
-
-
-
-
-
-
 
 ## 📊 technology stack
 
@@ -73,9 +73,9 @@ This project adopts**Branching development**，Each level is independent of the 
 
 
 
-## 🔑 游戏密码系统
+## 🔑 Game Password System
 
-每个关卡完成后会显示一个密码，用于解锁下一关：
+A password will be displayed after each level is completed, which is used to unlock the next level:
 
 - Level 1 → `1030`
 - Level 2 → `1218`  
