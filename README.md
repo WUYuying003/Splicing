@@ -1,16 +1,16 @@
-# 🎮 Splicing - 像素艺术拼接游戏
+# 🎮 Splicing - Pixel Art Puzzle Game
 
-一个多关卡的像素艺术风格游戏项目，每个关卡使用不同的色彩主题和游戏机制。
+A multi-level pixel art style game project, with each level using a different color theme and gameplay mechanics.
 
 ## 📂 项目结构
 
-本项目采用**分支式开发**，每个关卡独立在不同的分支中：
+This project adopts**Branching development**，Each level is independent of the other two branches:
 
 ### 🎯 关卡分支
 
 | 分支 | 主题 | 状态 | 代码量 | 描述 |
 |------|------|------|--------|------|
-| **Level-1** | 黑白世界 | ✅ 完成 | 1,334 行 | 平台跳跃游戏，完整的物理引擎和精灵动画 |
+| **Level-1** | 黑白世界 | ✅ 完成 | 1,334 行 | 文字收集游戏，记忆文字解开谜题 |
 | **Level-2** | 魔法猫咪 | ✅ 完成 | 1,005 行 | 跳跃冒险游戏，收集金币避开障碍 |
 | **level-3** | 手势追踪游戏 | ✅ 完成 | 1,771 行 | 手势追踪收集游戏，使用AI技术 |
 
