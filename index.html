@@ -44,6 +44,10 @@
             background: url('assets/backgrounds/stage3.jpg') center/cover no-repeat fixed;
             color: #ffffff;
         }
+        body.stage-4 { 
+            background: url('assets/backgrounds/stage4.jpg') center/cover no-repeat fixed;
+            color: #ffffff;
+        }
         
         /* 像素波浪边框 - 半透明 */
         .pixel-wave {
@@ -316,6 +320,33 @@
             z-index: 1000;
             display: none;
             overflow-y: auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .sidebar.hidden {
+            transform: translateX(100%);
+        }
+        
+        .sidebar-toggle {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            padding: 12px 18px;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            color: rgba(255, 255, 255, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            z-index: 1001;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+            display: none;
+        }
+        
+        .sidebar-toggle:hover {
+            background: rgba(0, 0, 0, 0.7);
+            transform: scale(1.05);
         }
         
         .sidebar h3 {
@@ -413,6 +444,7 @@
     </div>
     
     <!-- Sidebar - Stage Viewer (Only visible at 100% completion) -->
+    <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">◀ HIDE</button>
     <div class="sidebar" id="sidebar">
         <h3>🎨 REVIEW<br>EVOLUTION<br>HISTORY</h3>
         <div class="stage-buttons">
@@ -428,7 +460,8 @@
         const KEYS = {
             '1030': 2,  // Level 1 通关密钥 -> 解锁 Level 2
             '1218': 3,  // Level 2 通关密钥 -> 解锁 Level 3 (修正)
-            '0218': 4   // Level 3 通关密钥 -> 全部完成 (修正)
+            '0218': 4,  // Level 3 通关密钥 -> 全部完成 (修正)
+            'polyu': 5  // 彩蛋 -> 切换到 stage4.jpg
         };
         
         const LEVELS = {
@@ -516,10 +549,13 @@
             
             // 显示/隐藏侧边栏（仅在完成所有关卡后显示）
             const sidebar = document.getElementById('sidebar');
-            if (state.stage === 3) {
+            const toggleBtn = document.getElementById('sidebarToggle');
+            if (state.stage >= 3) {
                 sidebar.style.display = 'block';
+                toggleBtn.style.display = 'block';
             } else {
                 sidebar.style.display = 'none';
+                toggleBtn.style.display = 'none';
             }
             
             // 更新按钮状态
@@ -530,6 +566,19 @@
             viewStage = stage;
             updateTheme();
             updateStageButtons();
+        }
+        
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const toggleBtn = document.getElementById('sidebarToggle');
+            
+            if (sidebar.classList.contains('hidden')) {
+                sidebar.classList.remove('hidden');
+                toggleBtn.textContent = '◀ HIDE';
+            } else {
+                sidebar.classList.add('hidden');
+                toggleBtn.textContent = '▶ SHOW';
+            }
         }
         
         function updateStageButtons() {
@@ -556,6 +605,19 @@
             }
             
             const unlockLevel = KEYS[key];
+            
+            // 特殊处理 polyu 彩蛋，可以重复使用
+            if (key === 'polyu') {
+                state.stage = 4;
+                saveState(state);
+                msg.textContent = '🎉 Easter Egg! PolyU theme unlocked!';
+                msg.style.color = '#51cf66';
+                setTimeout(() => {
+                    render();
+                    input.value = '';
+                }, 1000);
+                return;
+            }
             
             if (unlockLevel && !state.unlocked.includes(unlockLevel)) {
                 if (unlockLevel === 4) {
