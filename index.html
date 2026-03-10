@@ -488,7 +488,7 @@
                 localStorage.setItem('splicing_version', currentVersion);
             }
 
-            return { stage: 3, unlocked: [1, 2, 3] };
+            return { stage: 0, unlocked: [1, 2, 3] };
         }
         
         function saveState(state) {
@@ -505,7 +505,7 @@
         
         function render() {
             if (!state || !Array.isArray(state.unlocked)) {
-                state = { stage: 3, unlocked: [1, 2, 3] };
+                state = { stage: 0, unlocked: [1, 2, 3] };
             }
 
             // 强制首页始终展示三个关卡，避免旧缓存状态导致关卡缺失
@@ -644,7 +644,7 @@
         render();
         
         window.resetGame = function() {
-            state = { stage: 3, unlocked: [1, 2, 3] };
+            state = { stage: 0, unlocked: [1, 2, 3] };
             saveState(state);
             render();
             console.log('游戏已重置');
