@@ -745,11 +745,32 @@ function update() {
 
 // Draw everything
 function draw() {
-    // Draw video feed as background (flipped horizontally for mirror effect)
-    ctx.save();
-    ctx.scale(-1, 1); // Flip horizontally
-    ctx.drawImage(video, -canvas.width, 0, canvas.width, canvas.height);
-    ctx.restore();
+    // Draw video feed with aspect-ratio-preserving crop (mirror effect)
+    if (video.videoWidth && video.videoHeight) {
+        const videoAspect = video.videoWidth / video.videoHeight;
+        const canvasAspect = canvas.width / canvas.height;
+
+        let srcX = 0;
+        let srcY = 0;
+        let srcW = video.videoWidth;
+        let srcH = video.videoHeight;
+
+        if (videoAspect > canvasAspect) {
+            srcW = video.videoHeight * canvasAspect;
+            srcX = (video.videoWidth - srcW) / 2;
+        } else {
+            srcH = video.videoWidth / canvasAspect;
+            srcY = (video.videoHeight - srcH) / 2;
+        }
+
+        ctx.save();
+        ctx.scale(-1, 1); // Flip horizontally
+        ctx.drawImage(video, srcX, srcY, srcW, srcH, -canvas.width, 0, canvas.width, canvas.height);
+        ctx.restore();
+    } else {
+        ctx.fillStyle = COLORS.bg;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
     
     // Optional: Add slight overlay for better visibility of UI elements
     ctx.fillStyle = 'rgba(26, 13, 46, 0.2)'; // Subtle purple overlay
