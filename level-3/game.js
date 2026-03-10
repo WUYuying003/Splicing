@@ -4,6 +4,14 @@ const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 const video = document.getElementById('video');
 
+const DESKTOP_WIDTH = 1920;
+const DESKTOP_HEIGHT = 1080;
+const PORTRAIT_MOBILE_WIDTH = 540;
+const PORTRAIT_MOBILE_HEIGHT = 960;
+
+let gameWidth = DESKTOP_WIDTH;
+let gameHeight = DESKTOP_HEIGHT;
+
 // Disable image smoothing for pixel art
 ctx.imageSmoothingEnabled = false;
 ctx.mozImageSmoothingEnabled = false;
@@ -194,8 +202,8 @@ async function initializeCamera() {
         // Request camera permission ONLY ONCE
         const stream = await navigator.mediaDevices.getUserMedia({
             video: {
-                width: { ideal: 1920 },
-                height: { ideal: 1080 },
+                width: { ideal: gameWidth },
+                height: { ideal: gameHeight },
                 facingMode: 'user'
             }
         });
@@ -220,8 +228,8 @@ async function initializeCamera() {
             onFrame: async () => {
                 await hands.send({image: video});
             },
-            width: 1920,
-            height: 1080
+            width: gameWidth,
+            height: gameHeight
         });
         
         await camera.start();
@@ -998,9 +1006,9 @@ function gameLoop() {
 function scaleGameToFit() {
     const container = document.querySelector('.game-container');
     if (!container) return;
-    
-    const targetWidth = 1920;
-    const targetHeight = 1080;
+
+    const targetWidth = gameWidth;
+    const targetHeight = gameHeight;
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
     
@@ -1011,10 +1019,50 @@ function scaleGameToFit() {
     container.style.transform = `scale(${scale})`;
 }
 
+function getTargetGameSize() {
+    const isPortraitMobile = window.innerHeight > window.innerWidth && window.innerWidth <= 900;
+    if (isPortraitMobile) {
+        return { width: PORTRAIT_MOBILE_WIDTH, height: PORTRAIT_MOBILE_HEIGHT };
+    }
+    return { width: DESKTOP_WIDTH, height: DESKTOP_HEIGHT };
+}
+
+function applyResponsiveLayout() {
+    const container = document.querySelector('.game-container');
+    const wrapper = document.querySelector('.game-wrapper');
+    if (!container || !wrapper) return;
+
+    const oldWidth = canvas.width;
+    const oldHeight = canvas.height;
+    const targetSize = getTargetGameSize();
+
+    gameWidth = targetSize.width;
+    gameHeight = targetSize.height;
+
+    container.style.width = `${gameWidth}px`;
+    container.style.height = `${gameHeight}px`;
+    wrapper.style.width = `${gameWidth}px`;
+    wrapper.style.height = `${gameHeight}px`;
+
+    canvas.width = gameWidth;
+    canvas.height = gameHeight;
+
+    if (oldWidth && oldHeight && targets.length > 0 && (oldWidth !== gameWidth || oldHeight !== gameHeight)) {
+        const scaleX = gameWidth / oldWidth;
+        const scaleY = gameHeight / oldHeight;
+        targets.forEach((target) => {
+            target.x = Math.max(60, Math.min(gameWidth - 60, target.x * scaleX));
+            target.y = Math.max(120, Math.min(gameHeight - 120, target.y * scaleY));
+        });
+    }
+
+    scaleGameToFit();
+}
+
 // Start game when page loads
 window.addEventListener('load', () => {
+    applyResponsiveLayout();
     init();
-    scaleGameToFit();
 });
 
-window.addEventListener('resize', scaleGameToFit);
+window.addEventListener('resize', applyResponsiveLayout);
