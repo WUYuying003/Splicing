@@ -507,6 +507,9 @@
             if (!state || !Array.isArray(state.unlocked)) {
                 state = { stage: 3, unlocked: [1, 2, 3] };
             }
+
+            // 强制首页始终展示三个关卡，避免旧缓存状态导致关卡缺失
+            state.unlocked = [1, 2, 3];
             
             updateTheme();
             
